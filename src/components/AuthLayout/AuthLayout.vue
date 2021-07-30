@@ -18,8 +18,5 @@ export default {
 </script>
 
 <style>
-    .wrapper{
-        background-color: black;
-        height: 100vh;
-    }
+
 </style>

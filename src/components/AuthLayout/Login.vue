@@ -1,12 +1,37 @@
 <template>
-  <div class="wrapper"> 
+<form class="form-horizontal" @submit.prevent="submitHandler">
+                <div class="card-body">
+                  <div class="form-group column">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10 center">
+                      <input v-model="email" type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group column">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10 center">
+                      <input v-model="password" type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="form-group column">
+                    <div class="offset-sm-2 col-sm-10">
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-info">Sign in</button>
+                </div>
+                <!-- /.card-footer -->
+              </form>
+  <!-- <div class="wrapper"> 
     <h1>Login</h1>
         <form @submit.prevent="submitHandler">
           <input type="email" v-model="email" />
           <input type="password" v-model="password" />
     <button type="submit">submit</button></form>
     <div v-if="error" class="error" >{{getEmail}}</div>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -37,31 +62,12 @@ export default {
 </script>
 
 <style lang ="scss" scoped>
-h1{
+.form-horizontal{
+  margin: 0 auto;
   text-align: center;
-  color: yellow;
-  margin-bottom: 50px;
+  max-width: 40vw;
 }
-.wrapper{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-form{
-  display: flex;
-  flex-direction: column;
-      justify-content: center;
-      align-items: center;
-  input{
-    margin-bottom: 20px;
-    width: 300px;
-    color: yellow;
-    background-color: rgb(92, 92, 1);
-  }
-  button{
-    background-color: orange;
-    border: none;
-    width: 150px;
-  }
+.center{
+  margin: 0 auto;
 }
 </style>
