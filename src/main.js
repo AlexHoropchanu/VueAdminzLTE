@@ -18,17 +18,16 @@ firebase.initializeApp({
   apiKey: "AIzaSyBaIOs1xofoZXZot2YUGtK3NoVXezSNnW8",
   authDomain: "vuetraine-deb7e.firebaseapp.com",
   projectId: "vuetraine-deb7e",
-  storageBucket: "vuetraine-deb7e.appspot.com",
+  storageBucket: "gs://vuetraine-deb7e.appspot.com",
   messagingSenderId: "1012917689741",
   appId: "1:1012917689741:web:2b1fac7af9aa55a20331c4",
   measurementId: "G-580XG6N6BH",
 });
-  let app
-  if (!app) {
+let app;
+if (!app) {
   new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
-  }
-
+    router,
+    store,
+    render: (h) => h(App),
+  }).$mount("#app");
+}

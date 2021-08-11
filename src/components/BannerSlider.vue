@@ -1,57 +1,74 @@
 <template>
   <div>
-      <div class="top__block">
-        <ul>
-          <li class="col-lg-3 " v-for="banner in getBanners" :key="banner.id" >
-            <img :src="banner.src" alt="#">
-            <input type="file" >
-            <label><span> Url: </span><input type="text" :value="banner.url"></label>
-            <label><span> Текст:</span> <input type="text" :value='banner.text'></label>
-          </li>
-        </ul>
-      </div>
+    <div class="top__block">
+      <ul>
+        <Banner
+          class="col-lg-3"
+          :card="banner"
+          v-for="banner in getBanners"
+          :key="banner.id"
+        >
+        </Banner>
+      </ul>
+      <button @click="save">save</button>
+      <div @click="addBanner">+</div>
+    </div>
   </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import Banner from "../components/Banner.vue";
+import { mapGetters, mapMutations, mapActions } from "vuex";
+
 export default {
+  components: {
+    Banner,
+  },
+  data() {
+    return {};
+  },
+  async mounted() {
+    await this.$store.dispatch("getBanners");
+    console.log(typeof getBanners);
+  },
   name: "BannerSlider",
-  computed:{
-    ...mapGetters([
-      'getBanners'
-    ]),
-  }
+  computed: {
+    ...mapGetters(["getBanners", "getImageUrl"]),
+  },
+  methods: {
+    ...mapMutations(["changeImageUrl", "changeImage", "addBanner"]),
+    ...mapActions(["save"]),
+  },
 };
 </script>
 
-<style lang ="scss" scoped>
-ul{
-  list-style-type: none ;
+<style lang="scss" scoped>
+ul {
+  list-style-type: none;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  li{
+  li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    img{
+    img {
       width: inherit;
       margin: 30px;
     }
   }
 }
-button{
+button {
   width: inherit;
   margin-bottom: 30px;
 }
-label{
+label {
   width: inherit;
   display: flex;
-  input{
+  input {
     width: inherit;
   }
-  span{
+  span {
     width: 65px;
   }
 }
