@@ -4,7 +4,7 @@ import Contacts from "../components/Contacts.vue";
 import Help from "../components/Help";
 import BannerSlider from "../components/BannerSlider";
 import AllCinemas from "../components/Cinemas/AllCinemas";
-// import News from "../components/News";
+import News from "../components/News";
 import Promotions from "../components/Promotions";
 import Pages from "../components/Pages";
 import Users from "../components/Users";
@@ -13,10 +13,7 @@ import Layout from "../components/Layout/Layout";
 import AuthLayout from "../components/AuthLayout/AuthLayout";
 import AllFilms from "../components/Films/AllFilms.vue";
 import Edit from "../components/Films/Edit.vue";
-import CardCinema from "../components/Cinemas/CardCinema.vue";
-import CardHall from "../components/Cinemas/CardHall.vue";
-import AllNews from '../components/News/AllNews.vue'
-import CurNews from '../components/News/CurNews.vue'
+import CardCinema from '../components/Cinemas/CardCinema.vue'
 
 Vue.use(VueRouter);
 
@@ -39,29 +36,11 @@ const routes = [
     meta: { layout: "layout" },
     component: Edit,
   },
-  {
+    {
     path: "/cinemas/edit/:id",
     name: "CardCinema",
     meta: { layout: "layout" },
     component: CardCinema,
-  },
-  {
-    path: "/halls/:id",
-    name: "CardHall",
-    meta: { layout: "layout" },
-    component: CardHall,
-  },
-  {
-    path: "/news/:id",
-    name: "AllNews",
-    meta: { layout: "layout" },
-    component: AllNews,
-  },
-  {
-    path: "/curNews/:id",
-    name: "CurNews",
-    meta: { layout: "layout" },
-    component: CurNews,
   },
   // {
   //   path: "/films/edit/:id",
@@ -117,12 +96,12 @@ const routes = [
     meta: { layout: "layout" },
     component: Promotions,
   },
-  // {
-  //   path: "/news",
-  //   name: "News",
-  //   meta: { layout: "layout" },
-  //   component: News,
-  // },
+  {
+    path: "/news",
+    name: "News",
+    meta: { layout: "layout" },
+    component: News,
+  },
   {
     path: "/cinemas",
     name: "AllCinemas",

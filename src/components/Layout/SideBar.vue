@@ -46,7 +46,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="{ name: 'AllNews' }" class="nav-link">
+            <router-link :to="{ name: 'News' }" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>Новости</p>
             </router-link>

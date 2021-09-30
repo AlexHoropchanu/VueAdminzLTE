@@ -94,9 +94,7 @@ export default {
     async add() {
       this.cinemas.push({
         id: `${Date.now()}_${Math.floor(Math.random() * 90000) + 10000}`,
-                  halls:[],
         ru: {
-
           title: "",
           description: "",
           conditions:'',
@@ -201,9 +199,6 @@ export default {
       this.removingState = "Записи в базе данных удалены";
       await saveDb("/cinemas", this.cinemas);
       this.removingState = "";
-       this.cinemas[key].halls.forEach(async element => {
-        await saveDb(`/halls/${element}`, null)
-      })
     },
     async removeGalleriesFromStorage(key) {
       for (var i = 0; i < this.cinemas[key].ru.gallery.length; i++) {

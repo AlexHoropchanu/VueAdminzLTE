@@ -155,9 +155,6 @@
                       </b-form-checkbox>
                     </b-form-group>
 
-                   
-
-
                     <b-form-group label="SEO">
                       <b-container class="ml-3">
                         <b-form-group label="URL" :label-for="'seo-url-' + key">
@@ -262,7 +259,6 @@ export default {
   },
   data() {
     return {
-
       saved: false,
       loaded: false,
       uploading: false,
@@ -281,8 +277,6 @@ export default {
     };
   },
   computed: {
-
-
     films() {
       return { ru: this.filmsFull.ru, ua: this.filmsFull.ua };
     },
