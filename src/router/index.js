@@ -2,37 +2,89 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Contacts from "../components/Contacts.vue";
 import Help from "../components/Help";
-// import Statistic from "../components/Statistic.vue";
 import BannerSlider from "../components/BannerSlider";
-import Films from "../components/Films";
-import Kino from "../components/Kino";
-import News from "../components/News";
+import AllCinemas from "../components/Cinemas/AllCinemas";
+// import News from "../components/News";
 import Promotions from "../components/Promotions";
 import Pages from "../components/Pages";
 import Users from "../components/Users";
 import Mailing from "../components/Mailing";
-// import Login from "../components/AuthLayout/Login";
-import Layout from '../components/Layout/Layout'
-import AuthLayout from '../components/AuthLayout/AuthLayout'
+import Layout from "../components/Layout/Layout";
+import AuthLayout from "../components/AuthLayout/AuthLayout";
+import AllFilms from "../components/Films/AllFilms.vue";
+import Edit from "../components/Films/Edit.vue";
+import CardCinema from "../components/Cinemas/CardCinema.vue";
+import CardHall from "../components/Cinemas/CardHall.vue";
+import AllNews from '../components/News/AllNews.vue'
+import CurNews from '../components/News/CurNews.vue'
+
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/authLayout",
     name: "Authlayout",
-    meta: { layout: 'authLayout' },
+    meta: { layout: "authLayout" },
     component: AuthLayout,
   },
   {
+    path: "/films",
+    name: "AllFilms",
+    meta: { layout: "layout" },
+    component: AllFilms,
+  },
+  {
+    path: "/films/edit/:id",
+    name: "Edit",
+    meta: { layout: "layout" },
+    component: Edit,
+  },
+  {
+    path: "/cinemas/edit/:id",
+    name: "CardCinema",
+    meta: { layout: "layout" },
+    component: CardCinema,
+  },
+  {
+    path: "/halls/:id",
+    name: "CardHall",
+    meta: { layout: "layout" },
+    component: CardHall,
+  },
+  {
+    path: "/news/:id",
+    name: "AllNews",
+    meta: { layout: "layout" },
+    component: AllNews,
+  },
+  {
+    path: "/curNews/:id",
+    name: "CurNews",
+    meta: { layout: "layout" },
+    component: CurNews,
+  },
+  // {
+  //   path: "/films/edit/:id",
+  //   name: "EditFilm",
+  //   meta: { layout: "layout" },
+  //   component: EditFilm,
+  // },
+  // {
+  //   path: "/films/commingSoon/:id",
+  //   name: "EditCommingSoonFilm",
+  //   meta: { layout: "layout" },
+  //   component: EditFilm,
+  // },
+  {
     path: "/layout",
     name: "layout",
-    meta: {layout: 'layout'},
+    meta: { layout: "layout" },
     component: Layout,
   },
   {
     path: "/banner-slider",
     name: "BannerSlider",
-    meta: {layout: 'layout'},
+    meta: { layout: "layout" },
     component: BannerSlider,
   },
   // {
@@ -44,61 +96,56 @@ const routes = [
   {
     path: "/mailing",
     name: "Mailing",
-       meta: {layout: 'layout'},
+    meta: { layout: "layout" },
     component: Mailing,
   },
   {
     path: "/users",
     name: "Users",
-       meta: {layout: 'layout'},
+    meta: { layout: "layout" },
     component: Users,
   },
   {
     path: "/pages",
     name: "Pages",
-       meta: {layout: 'layout'},
+    meta: { layout: "layout" },
     component: Pages,
   },
   {
     path: "/promotions",
     name: "Promotions",
-       meta: {layout: 'layout'},
+    meta: { layout: "layout" },
     component: Promotions,
   },
+  // {
+  //   path: "/news",
+  //   name: "News",
+  //   meta: { layout: "layout" },
+  //   component: News,
+  // },
   {
-    path: "/news",
-    name: "News",
-       meta: {layout: 'layout'},
-    component: News,
+    path: "/cinemas",
+    name: "AllCinemas",
+    meta: { layout: "layout" },
+    component: AllCinemas,
   },
-  {
-    path: "/kino",
-    name: "Kino",
-       meta: {layout: 'layout'},
-    component: Kino,
-  },
-  {
-    path: "/films",
-    name: "Films",
-    meta: {layout: 'layout'},
-    component: Films,
-  },
+
   {
     path: "/contacts",
     name: "Contacts",
-    meta: {layout: 'layout'},
+    meta: { layout: "layout" },
     component: Contacts,
   },
   {
     path: "/statistic",
     name: "Statistic",
-    meta: {layout: 'layout'},
-    component: ()=> import('../components/Statistic.vue'),
+    meta: { layout: "layout" },
+    component: () => import("../components/Statistic.vue"),
   },
   {
     path: "/help",
     name: "Help",
-       meta: {layout: 'layout'},
+    meta: { layout: "layout" },
     component: Help,
   },
 ];

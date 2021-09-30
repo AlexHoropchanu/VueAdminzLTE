@@ -3,10 +3,14 @@ export default {
   state: {
     saveImages: [],
     banners: [],
+    showPreloader: false,
   },
   getters: {
+    getPreloader(state) {
+      return state.showPreloader;
+    },
     getBanners(state) {
-      console.log(state.banners);
+      // console.log(state.banners);
       return state.banners;
     },
     getImageUrl(state) {
@@ -17,29 +21,24 @@ export default {
     // },
   },
   mutations: {
+    changeShowPreloader(state) {
+      state.showPreloader = true;
+    },
     addBanner(state) {
       state.banners.push({
         imageUrl:
           "https://s1.1zoom.ru/big0/697/Love_Night_Moon_Trees_Silhouette_Two_Dating_576752_1280x853.jpg",
         id: Date.now(),
-        url: "d",
-        text: "a",
+        url: "",
+        text: "",
       });
       // console.log(state.banners);
-    },
-    deleteBanner(state, payload) {
-      state.banners.forEach((element, index, object) => {
-        if (element.id == payload.target.id) {
-          object.splice(index, 1);
-        }
-      });
     },
     setImages(state, payload) {
       state.saveImages = payload;
     },
     changeImageUrl(state, payload) {
       state.saveImages.push(payload);
-      // state.banners[payload.id].imageUrl = payload.fileUrl;
     },
     cleareImageUrl(state) {
       state.imageUrl = "";
@@ -57,12 +56,26 @@ export default {
     },
   },
   actions: {
+    async deleteBanner(context, payload) {
+      await context.state.banners.forEach((element, index, object) => {
+        if (element.id == payload.target.id) {
+          object.splice(index, 1);
+          console.dir(element.imageUrl);
+          const ref = firebase.storage().refFromURL(element.imageUrl);
+          ref.delete();
+        }
+      });
+      return firebase
+        .database()
+        .ref("banners/top")
+        .set(context.state.banners);
+    },
     async save(context) {
       if (context.state.saveImages != 0) {
         try {
           for (let el = context.state.saveImages.length - 1; el >= 0; el--) {
             let fl = context.state.saveImages[el];
-            const ref = firebase.storage().ref(`banners/ ${fl.pictures.name}`);
+            const ref = firebase.storage().ref(`banners/top/ ${fl.pictures.name}`);
             const snapshot = await ref.put(fl.pictures);
             const downloadUrl = await snapshot.ref.getDownloadURL();
             context.commit("ubdateImgeUrl", { downloadUrl, id: fl.id });
@@ -74,13 +87,13 @@ export default {
       //.delete() удаление со сторейдж .set перезаписываем датабейс
       return firebase
         .database()
-        .ref("banners")
+        .ref("banners/top")
         .set(context.state.banners);
     },
     async getBanners(context) {
       const snapshot = await firebase
         .database()
-        .ref("banners")
+        .ref("banners/top")
         .once("value");
       const bannersObj = snapshot.val();
       context.commit("setBanners", bannersObj);

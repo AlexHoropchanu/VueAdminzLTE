@@ -65,7 +65,7 @@ export default {
 .form-horizontal{
   margin: 0 auto;
   text-align: center;
-  max-width: 40vw;
+  width: 40vw;
 }
 .center{
   margin: 0 auto;

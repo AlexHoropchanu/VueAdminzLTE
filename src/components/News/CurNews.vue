@@ -1,10 +1,10 @@
 <template>
-  <h1>Сдесь будет Kino</h1>
+  <h1>Сдесь будет News</h1>
 </template>
 
 <script>
 export default {
-  name: "Kino",
+  name: "News",
 };
 </script>
 
